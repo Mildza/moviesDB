@@ -4,11 +4,13 @@
 # dependencies
 
 node_modules/
-
+/node_modules
 config/database.js
 
 _netrc
-
+/dist
+/tmp
+/out-tsc
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
