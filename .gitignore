@@ -6,7 +6,7 @@
 node_modules/
 /node_modules
 config/database.js
-
+package-lock.json
 _netrc
 /dist
 /tmp
