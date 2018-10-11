@@ -1,0 +1,16 @@
+<div class="wrapper">
+<h2 class="text-center">Trazi film koji hoces da obrises</h2>
+
+<form #searchForm (ngSubmit)="searchMovie()">
+<input type="text" class="form-control" [(ngModel)]="movie" (keyup)="onKey($event)" name="movie" placeholder="Search movie" required>
+<button  type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div *ngIf="detect">
+    <h3 class="text-center mt-5">Obrisati film</h3>
+   <p class="text-center">{{data.naziv}} - <i>{{data.glumci}}</i></p>
+    <button class="btn btn-danger" (click)="delete()">Obrisi film</button>
+
+</div>
+<div *ngIf="message" class="error" [ngStyle]="{'background-color':color == true ? 'green' : 'red' }">{{message}}</div>
+</div>

@@ -1,0 +1,75 @@
+
+.text {
+    font-size: 1.3em;
+}
+
+.badge {
+    background-color: #01579b;
+}
+.poster {
+    background-color: #0277bd;
+    border: 2px solid #FFF;
+    margin:0 auto;
+    width: 650px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFF;
+    height:200px;
+}
+
+.poster h3 {
+    display: inline-block;
+    font-size: 1.7em;
+}
+
+.poster span {
+    font-size: 1.4em;
+}
+
+.stars {
+    color:  rgb(247, 229, 74);  
+  }
+
+  .center {
+    color: #01579b;
+  }
+  span > img {
+    padding-right: 5px;
+  }
+
+  .search {
+    width: 650px;
+    margin: 5px auto;
+  }
+
+  .search span {
+    font-size: 1.3em;
+  }
+
+  .genre {
+    text-align: center;
+  }
+
+  .spinner:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    border-radius: 50%;
+    border-top: 2px solid rgb(207, 204, 202);
+    border-right: 2px  rgb(241, 239, 237);   
+    border-bottom: 2px solid transparent;
+    animation: spinner 0.7s linear infinite;
+  }
+  
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }

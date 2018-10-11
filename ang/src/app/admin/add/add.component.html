@@ -1,0 +1,112 @@
+  
+  <h2 class="text-center">Dodaj film</h2>
+  <div class="forma">
+  
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="film"><h5>Film:</h5></label>
+      <input type="text" id="film" class="form-control" formControlName="movie" required>
+      <br>
+      <label for="glumci"><h5>Glumci:</h5></label>
+      <input type="text" id="glumci" class="form-control" formControlName="actors">
+    </div>
+
+    <div class="zanr" formGroupName="zanr">
+      <h5>Zanr:</h5>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="akcija" value="ackija" id="akcija">
+        <label class="form-check-label" for="akcija">akcija</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="drama" value="drama" id="drama">
+        <label class="form-check-label" for="drama">drama</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="horor" value="horor" id="horor">
+        <label class="form-check-label" for="horor">horor</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="komedija" value="komedija" id="komedija">
+        <label class="form-check-label" for="komedija">komedija</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="triler" value="triler" id="triler">
+        <label class="form-check-label" for="triler">triler</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="misterija" value="misterija" id="misterija">
+        <label class="form-check-label" for="misterija">misterija</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="sf" value="sf" id="sf">
+        <label class="form-check-label" for="sf">sf</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="fantasy" value="fantasy" id="fantasy">
+        <label class="form-check-label" for="fantasy">fantasy</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="deciji" value="deciji" id="deciji">
+        <label class="form-check-label" for="deciji">deciji</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="crtani" value="crtani" id="crtani">
+        <label class="form-check-label" for="crtani">crtani</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="trid" value="3d" id="3D">
+        <label class="form-check-label" for="3D">3D</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="ekstra" value="ekstra" id="extra">
+        <label class="form-check-label" for="extra">extra</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="uskoro" value="uskoro" id="uskoro">
+        <label class="form-check-label" for="uskoro">uskoro</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" formControlName="nisam" value="nisam" id="nisam">
+        <label class="form-check-label" for="nisam">Nisam gledao</label>
+      </div>
+    </div>
+    
+    <div class="ocena">
+    <h5>Ocena:</h5>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena0" value="0">
+      <label class="form-check-label" for="ocena0">0</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena1" value="1">
+      <label class="form-check-label" for="ocena1">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena2" value="2">
+      <label class="form-check-label" for="ocena2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena3" value="3">
+      <label class="form-check-label" for="ocena3">3</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena4" value="4">
+      <label class="form-check-label" for="ocena4">4</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="ocena" name="ocena" id="ocena5" value="5">
+      <label class="form-check-label" for="ocena5">5</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="komentar"> <h5> Komentar:</h5></label>
+    <textarea class="form-control" formControlName="comentar" id="komentar" rows="3"></textarea>
+  </div>
+
+  <div class="btn">
+    <button type="submit" class="btn btn-success" [disabled]="!movieForm.valid">Submit</button>
+  </div>
+  </form>
+</div>

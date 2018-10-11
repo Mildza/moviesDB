@@ -1,0 +1,62 @@
+
+<h1 class="text-center my-5">Mildza's Movie Database</h1>
+<div class="search">
+  <input class="center" type="text" (keyup)="onKey($event)" placeholder="Search ...">
+  <span class="float-right">Ukupno:  {{numberOfMovies}}</span> 
+</div>
+
+<div class="spinner" *ngIf="!movies else cinema"></div>
+
+<ng-template #cinema>
+<div *ngFor="let movie of movies | reverse | filter : search as result; let i = count;" >
+    {{check(result.length)}}
+<div class="poster">
+  <h3 class="badge">{{movie.naziv}}</h3>
+    <span class="float-right" *ngIf="movie.ocena==1">
+      <i class="fas fa-star stars details"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </span>
+    <span class="float-right" *ngIf="movie.ocena==2">
+      <i class="fas fa-star stars details"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </span>
+    <span class="float-right" *ngIf="movie.ocena==3">
+      <i class="fas fa-star stars details"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </span>
+    <span class="float-right" *ngIf="movie.ocena==4">
+      <i class="fas fa-star stars details"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star"></i>
+    </span>
+    <span class="float-right" *ngIf="movie.ocena==5">
+      <i class="fas fa-star stars details"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+      <i class="fas fa-star stars"></i>
+    </span>
+  
+  <p class="text lead font-italic">{{movie.glumci}}</p>
+  <div class="genre" *ngIf="movie">
+    <span *ngFor = "let zanr of movie.zanr">
+          <img src = "../../assets/images/{{zanr}}.png" title="{{zanr}}">
+    </span>
+  </div>
+  <p class="text lead">"{{movie.utisak}}"</p>
+  
+</div>
+    
+</div>
+</ng-template>
