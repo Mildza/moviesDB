@@ -29,3 +29,8 @@ module.exports.deleteMovie = function(id, callback) {
   const query = {_id: id}  
   Movie.remove(query, callback)  
 }
+
+module.exports.updateMovie = function(id, newMovie, callback) {
+  const query = {_id: id}  
+  Movie.findByIdAndUpdate(query, newMovie, {upsert:true}, callback)   
+}

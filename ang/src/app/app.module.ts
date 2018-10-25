@@ -19,6 +19,8 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 
 import { DataService } from './services/data.service'
+import { ErrorService } from './services/error.service'
+
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent}, 
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
   ],
   
   providers: [
-    DataService
+    DataService,
+    ErrorService
   ],
 
   bootstrap: [AppComponent],

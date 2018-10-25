@@ -10,9 +10,11 @@ export class FilterPipe implements PipeTransform {
 			
 			if(!term) return items;
 			 return items.filter((x:any) => 
-			 x.naziv.toLowerCase().startsWith(term.toLowerCase()) 
+			 x.naziv.toLowerCase().includes(term.toLowerCase()) 
 			 ||
-			 x.glumci.toLowerCase().startsWith(term.toLowerCase()) 
+			 x.glumci.toLowerCase().includes(term.toLowerCase())
+			 ||
+			 x.utisak.toLowerCase().includes(term.toLowerCase())
 			 )} 
 
   }

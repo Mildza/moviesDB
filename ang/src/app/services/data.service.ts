@@ -21,8 +21,11 @@ export class DataService {
     return this.http.post('http://localhost:3000/find', movie)
   }
 
+  updateMovie(movie) {
+    return this.http.post('http://localhost:3000/update', movie)
+  }
+
   deleteMovie(id){
-    console.log(id)
     const url = `http://localhost:3000/delete/${id}`
     return this.http.delete(url, id)
   }

@@ -110,3 +110,4 @@
   </div>
   </form>
 </div>
+<div *ngIf="message" class="error" [ngStyle]="{'background-color':color == true ? 'green' : 'red' }">{{error}}</div>

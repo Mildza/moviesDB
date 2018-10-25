@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DataService } from '../../services/data.service'
+
 
 @Component({
   selector: 'app-delete',
@@ -9,13 +11,17 @@ import { DataService } from '../../services/data.service'
 })
 export class DeleteComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private router:Router
+    ) {}
 
   movie:string
   data:any
   delInfo:any
   detect:boolean = false
   message: string
+  color:boolean
 
   ngOnInit() {
   }
@@ -31,7 +37,6 @@ export class DeleteComponent implements OnInit {
       } else {
         this.detect = true
         this.message = ""
-        
       }
     })
   }
@@ -42,7 +47,12 @@ export class DeleteComponent implements OnInit {
     
   delete(){
     this.dataService.deleteMovie(this.data._id)
-    .subscribe(result => this.delInfo = result)
+    .subscribe(result => {
+      this.delInfo = result;
+      if(this.delInfo.success==true){
+        this.router.navigate(['/'])
+      }
+    })
   }
 
 }

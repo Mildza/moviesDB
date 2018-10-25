@@ -10,17 +10,20 @@
     background-color: #0277bd;
     border: 2px solid #FFF;
     margin:0 auto;
-    width: 650px;
+    max-width: 550px;
     margin-bottom: 5px;
     padding: 10px;
     border-radius: 5px;
     color: #FFF;
-    height:200px;
+    height:auto;
 }
 
 .poster h3 {
-    display: inline-block;
-    font-size: 1.7em;
+    padding:10px 5px;
+    text-align: center;
+    background-color: #01579b;
+    border-radius: 15px;
+    font-size: 1.8em;
 }
 
 .poster span {
@@ -34,12 +37,18 @@
   .center {
     color: #01579b;
   }
-  span > img {
+ .genre img {
     padding-right: 5px;
+  }
+  .genre {
+    text-align: left;
+  }
+  .marks {
+    text-align:right;
   }
 
   .search {
-    width: 650px;
+    width: 550px;
     margin: 5px auto;
   }
 
@@ -47,9 +56,11 @@
     font-size: 1.3em;
   }
 
-  .genre {
-    text-align: center;
+  .actors {
+    font-size: 1.6em;
+    padding-top: 10px;
   }
+
 
   .spinner:before {
     content: "";
@@ -73,3 +84,11 @@
       transform: rotate(360deg);
     }
   }
+
+  @media (max-width: 768px) {
+    h3 {word-wrap:normal;}
+    .marks, .genre {
+      text-align: center;
+      padding:10px 0px;
+    }
+   }

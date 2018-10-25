@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DataService } from '../../services/data.service'
-
+import { ErrorService } from '../../services/error.service'
 
 @Component({
   selector: 'app-add',
@@ -13,61 +14,74 @@ export class AddComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private dataService:DataService
+    private dataService:DataService,
+    private errorService:ErrorService,
+    private router:Router
     ) { }
 
+  data:any
+  valid:any
+  color:boolean
+  message:boolean
+  error:string
+  movieForm:FormGroup
+
   ngOnInit() {
+    this.movieForm = this.fb.group({
+      movie:['', Validators.required],
+      actors:[''],
+      zanr: this.fb.group({
+          akcija:[],
+          drama:[],
+          horor:[],
+          komedija:[],
+          triler:[],
+          misterija:[],
+          sf:[],
+          fantasy:[],
+          deciji:[],
+          crtani:[],
+          trid:[],
+          ekstra:[],
+          uskoro:[],
+          nisam:[]
+      }),
+      ocena:['0'],
+      comentar:['']
+    })
   }
 
-  movieForm = this.fb.group({
-    movie:['Purge', Validators.required],
-    actors:['Niko'],
-    zanr: this.fb.group({
-        akcija:[],
-        drama:[],
-        horor:[],
-        komedija:[],
-        triler:[],
-        misterija:[],
-        sf:[],
-        fantasy:[],
-        deciji:[],
-        crtani:[],
-        trid:[],
-        ekstra:[],
-        uskoro:[],
-        nisam:[]
-    }),
-    ocena:['0'],
-    comentar:['Dobar film']
-  })
-
   onSubmit() {
+   
     const form = {
         movie :this.movieForm.value.movie,
         actors :this.movieForm.value.actors,
         ocena :this.movieForm.value.ocena,
         komentar :this.movieForm.value.comentar,
-        zanr : this.getChecked(this.movieForm.value.zanr) 
+        zanr : this.movieForm.value.zanr 
     }
-    this.dataService.addMovie(form)
-    .subscribe(response => console.log(response))
-  }
-
-  getChecked(object){
-    const entries = Object.entries(object)
-    const zanr = []
-    for (const key of entries) {
-      if(key[1]) {
-        if(key[0] =="trid") {
-          key[0]="3d"
-        } else if(key[0] =="nisam") {
-          key[0]="-"
-      } 
-        zanr.push(key[0])
-      }      
-    }
-    return zanr
+    const search = {movieName:this.movieForm.value.movie}
+    this.dataService.findMovie(search)
+    .subscribe(response => {
+        this.valid = response
+        if(this.valid.success === false){
+          this.dataService.addMovie(form)
+          .subscribe(response => {
+            this.data = response;
+            if(this.data.success == true){
+              this.router.navigate(['/'])
+          } 
+        })
+      } else {
+          this.message = true
+          this.error = "Vec postoji film sa isitm nazivom"
+          this.errorService.displayMessage()
+          .subscribe(response => {
+              this.message = response.message
+              this.color = response.color
+          }) 
+        }
+    })    
   }
   
 }

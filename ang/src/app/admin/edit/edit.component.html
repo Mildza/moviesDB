@@ -1,11 +1,12 @@
 <div class="forma">
 <h2 class="text-center">Promeni film</h2>
-<form #searchForm (ngSubmit)="searchMovie()">
-  <input type="text" class="form-control" [(ngModel)]="movie" name="movie" placeholder="Search movie" required>
-  <button  type="submit" class="btn btn-primary">Search</button>
+<form #searchForm="ngForm" (ngSubmit)="searchMovie()">
+  <input type="text" class="form-control" [(ngModel)]="movie"  name="movie" placeholder="Search movie" required>
+  <button  type="submit" class="btn btn-primary mt-3" [disabled]="!searchForm.valid">Search</button>
+  
 </form>
 
-<form *ngIf="data" [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+<form *ngIf="detect" [formGroup]="movieForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="film"><h5>Film:</h5></label>
     <input type="text" id="film" class="form-control" formControlName="naziv" required>
@@ -112,4 +113,6 @@
   <button type="submit" class="btn btn-success" [disabled]="!movieForm.valid">Submit</button>
 </div>
 </form>
+<div *ngIf="message" class="error" [ngStyle]="{'background-color':color == true ? 'green' : 'red' }">{{message}}</div>
+
 </div>
