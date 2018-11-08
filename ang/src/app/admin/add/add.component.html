@@ -5,8 +5,17 @@
   <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="film"><h5>Film:</h5></label>
-      <input type="text" id="film" class="form-control" formControlName="movie" required>
+      <input type="text" id="film" class="form-control" [ngClass]="{'has-error' : movieForm.get('movie').touched || movieForm.get('movie').dirty }" formControlName="movie" #movie required>
+    </div>
+    
+    <!-- <div *ngIf="movieForm.get('movie').errors && movieForm.get('movie').touched || movieForm.get('movie').dirty" class="alert alert-danger"> -->
+      <!-- <div *ngIf="movieForm.get('movie').errors.required">
+        Ime je obavezno.
+      </div> -->
+    <!-- </div> -->
+
       <br>
+      <div class="form-group">
       <label for="glumci"><h5>Glumci:</h5></label>
       <input type="text" id="glumci" class="form-control" formControlName="actors">
     </div>

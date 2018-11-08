@@ -1,4 +1,4 @@
-
+h1 {margin: 40px 0px;}
 .text {
     font-size: 1.3em;
 }
@@ -48,7 +48,7 @@
   }
 
   .search {
-    width: 550px;
+    max-width: 550px;
     margin: 5px auto;
   }
 
@@ -73,10 +73,10 @@
     margin-top: -30px;
     margin-left: -30px;
     border-radius: 50%;
-    border-top: 2px solid rgb(207, 204, 202);
+    border-top: 3px solid rgb(207, 204, 202);
     border-right: 2px  rgb(241, 239, 237);   
-    border-bottom: 2px solid transparent;
-    animation: spinner 0.7s linear infinite;
+    border-bottom: 3px solid transparent;
+    animation: spinner 1.5s linear infinite;
   }
   
   @keyframes spinner {
@@ -87,6 +87,7 @@
 
   @media (max-width: 768px) {
     h3 {word-wrap:normal;}
+    h1 {margin: 20px 0px;}
     .marks, .genre {
       text-align: center;
       padding:10px 0px;

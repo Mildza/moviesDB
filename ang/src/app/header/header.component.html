@@ -1,8 +1,13 @@
-<div class="home d-inline  ml-3">
-  <a routerLink="/"><i class="fas fa-home fa-3x mt-2"></i></a>
-</div>
+<div class="login" *ngIf="!logged"><a  routerLink="/login">Login</a></div>
+<div *ngIf="logged">
+  <div class="d-inline  ml-3">
+    <a routerLink="/"><i class="fas fa-home fa-3x mt-2"></i></a>
+  </div>
 
-<div class="login d-inline mt-2 mr-3 float-right">
-  <!-- <div *ngIf="!google" class="login2" > -->
-  <a routerLink="/cp">Control Panel</a>
+  <div class="d-inline mt-2 mr-3 float-right">  
+    <a routerLink="/cp">Control Panel</a>
+    <div class="text-center">
+      <a href="#" (click)="logout()">Logout</a>
+    </div>
+  </div>
 </div>

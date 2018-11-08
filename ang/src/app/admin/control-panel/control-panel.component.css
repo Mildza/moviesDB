@@ -1,3 +1,13 @@
 h1  {
     padding: 20px 0;
 }
+
+.margins {
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .margins{
+        margin-top: 3px;
+    }
+   }

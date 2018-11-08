@@ -9,6 +9,7 @@ config/database.js
 package-lock.json
 _netrc
 /dist
+dist
 /tmp
 /out-tsc
 ### VisualStudioCode ###

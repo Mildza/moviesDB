@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const timestamp = require('mongoose-timestamp')
+
 
 const Schema = mongoose.Schema({
 
@@ -8,6 +10,8 @@ const Schema = mongoose.Schema({
     ocena: String,
     utisak: String
   });
+
+Schema.plugin(timestamp)
   
 var mlab = "Movie" 
 var Movie = "Movie"

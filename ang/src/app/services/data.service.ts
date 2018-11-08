@@ -8,7 +8,6 @@ export class DataService {
 
   constructor(private http:HttpClient) {  }
 
-
   getAll() {
     return this.http.get('http://localhost:3000/all');
   }
@@ -29,5 +28,16 @@ export class DataService {
     const url = `http://localhost:3000/delete/${id}`
     return this.http.delete(url, id)
   }
+
+  getFbUser(id){
+    return this.http.get('http://localhost:3000/user/fb/'+ id)
+  }
+
+  logOut(){ 
+    localStorage.removeItem('fb')
+    localStorage.clear()          
+    return this.http.get('http://localhost:3000/user/logout')
+  }
+
 
 }

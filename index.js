@@ -1,12 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup.js')
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
 const path = require('path');
-const config = require('./config/database')
+const config = require('./config/database');
 
+const auth = require('./routes/auth');
 const movies = require('./routes/movies')
+const user = require('./routes/user')
 
+mongoose.set('useFindAndModify', false)
 mongoose.connect(config.database,{ useNewUrlParser: true })
 
 mongoose.connection.on('connected', () => {
@@ -19,9 +24,15 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 app.use(cors())
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.json());
 
+
 app.use('/', movies)
+app.use('/auth', auth)
+app.use('/user', user)
 
 const port = process.env.PORT || 3000
 

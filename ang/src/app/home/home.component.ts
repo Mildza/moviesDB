@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { DataService } from '../services/data.service'
+import { EnableLog } from '../services/enableLog.service'
+
 
 @Component({
   selector: 'app-home',
@@ -9,11 +10,16 @@ import { DataService } from '../services/data.service'
 })
 export class HomeComponent implements OnInit {
 
-movies:any
-numberOfMovies: number
-result
-
-  constructor(private dataService:DataService) { }
+  movies:any
+  numberOfMovies: number
+  result
+  search = '';
+  pass : boolean = false
+  
+  constructor(
+    private dataService:DataService,
+    private enableLog: EnableLog
+    ){}
 
   ngOnInit() {
     this.dataService.getAll()
@@ -21,16 +27,14 @@ result
       this.movies = result
       this.numberOfMovies = this.movies.length
       }) 
-}
+  }
 
-search = '';
+  onKey(event: any) {
+    this.search = event.target.value;
+  }
 
-onKey(event: any) { // without type info
-  this.search = event.target.value;
-}
-
-check(result){
-  this.numberOfMovies = result
-}
+  check(result){
+    this.numberOfMovies = result
+  }
 
 }

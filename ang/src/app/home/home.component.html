@@ -1,5 +1,4 @@
-
-<h1 class="text-center my-5">Mildza's Movie Database</h1>
+<h1 class="text-center">Mildza's Movie Database</h1>
 <div class="search">
   <input class="center" type="text" (keyup)="onKey($event)" placeholder="Search ...">
   <span class="float-right">Ukupno:  {{numberOfMovies}}</span> 
@@ -60,7 +59,9 @@
 </div>
   <p class="text actors lead text-center">{{movie.glumci}}</p>
   
-  <p class="text lead font-italic text-center">{{movie.utisak}}</p>
+  <p class="text lead font-italic text-center mb-0">{{movie.utisak}} </p>
+  <p class="small font-italic text-right mb-0">{{movie.updatedAt | date: 'MMMM, yyyy'}}</p>
+  
     
 </div>
 </div>
