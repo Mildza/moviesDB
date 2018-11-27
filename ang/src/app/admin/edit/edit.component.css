@@ -41,3 +41,10 @@
     color:#FFF;
     margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+    .forma {
+        width:90%;
+        margin: 0 auto;
+    }
+   }
