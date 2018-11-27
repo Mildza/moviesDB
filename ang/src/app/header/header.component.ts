@@ -12,15 +12,11 @@ import { DataService } from '../services/data.service'
 export class HeaderComponent implements OnInit {
  
   logged:boolean = false
-
-
-    
+ 
     constructor(
       private enableLog: EnableLog,
       private dataService: DataService
-      ) { 
-    this.enableLog.showLogin().subscribe( val => this.logged = val)
-  }
+      ) { this.enableLog.showLogin().subscribe( val => this.logged = val)}
 
   ngOnInit() {
     

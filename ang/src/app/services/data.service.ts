@@ -33,8 +33,13 @@ export class DataService {
     return this.http.get('http://localhost:3000/user/fb/'+ id)
   }
 
+  checkUser(user){
+    return this.http.post('http://localhost:3000/admin/pass', user)
+  }
+
   logOut(){ 
     localStorage.removeItem('fb')
+    localStorage.removeItem('user')
     localStorage.clear()          
     return this.http.get('http://localhost:3000/user/logout')
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { DataService } from '../services/data.service'
 import { AuthService } from '../services/auth.service';
 import { EnableLog } from '../services/enableLog.service';
@@ -13,12 +13,16 @@ export class LoginComponent implements OnInit {
 
   user
   fb
+  username:string
+  pass:string
+  data
   
   constructor(
     private route:ActivatedRoute,
     private dataService:DataService,
     private authService:AuthService,
-    private enableLog: EnableLog
+    private enableLog: EnableLog,
+    private router: Router
   ) { 
     
     const id = this.route.snapshot.params['id']
@@ -38,4 +42,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkUser(){
+    const userLogs = { username: this.username, password: this.pass }
+    this.dataService.checkUser(userLogs)
+    .subscribe(data => {
+      this.data = data
+      if(this.data.success){
+      this.authService.storeToken(this.data.user, this.data.token)
+      this.enableLog.clicked(true)
+      this.router.navigate(['/cp']);
+      }
+    })
+  }
 }

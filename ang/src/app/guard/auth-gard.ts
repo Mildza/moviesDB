@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate{
   constructor(private authService: AuthService){}
 
   canActivate(){ 
-      if(this.authService.loggedIn()) {
+      if(this.authService.loggedIn() || this.authService.loggedInToken()) {
         return true;
       } else {
         return false;

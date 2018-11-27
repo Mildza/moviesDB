@@ -14,12 +14,8 @@ export class HomeComponent implements OnInit {
   numberOfMovies: number
   result
   search = '';
-  pass : boolean = false
   
-  constructor(
-    private dataService:DataService,
-    private enableLog: EnableLog
-    ){}
+  constructor(private dataService:DataService){}
 
   ngOnInit() {
     this.dataService.getAll()

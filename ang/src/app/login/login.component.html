@@ -3,6 +3,18 @@
   <div *ngIf="!user" class="facebook">
       <h3>Logujte se preko Facebooka</h3>  
     <a class="facebook-btn" href="http://localhost:3000/auth/facebook">Facebook</a>
+    <br>
+    <br>
+    <hr>
+    <div class="input-group-prepend col-sm-4 offset-4">
+      <label for="username" class="input-group-text label">Username: </label>
+      <input type="text" name="username" class="form-control" [(ngModel)]="username">  
+    </div> 
+    <div class="input-group-prepend col-sm-4 offset-4 ">
+      <label for="password" class="input-group-text label">Password: </label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="pass">
+    </div>
+    <button class="btn btn-success" (click)="checkUser()">LogIn</button>
   </div>
   <div *ngIf="user" class="facebook">
     <div *ngFor="let user of user">

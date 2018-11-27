@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-  client: any
-  googleId: any
-  email: any
-  
+ 
+  authToken:any
+  user: string
+
   constructor() {     
   }
 
@@ -24,5 +24,25 @@ export class AuthService {
       return true;
     }           
   }
+
+
+  loggedInToken(){
+    const token = localStorage.getItem(this.user)          
+    if(this.authToken){
+      return true;
+    }           
+  }
+
+  storeToken(user, token){
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('jwt', token)
+    this.authToken = token
+    this.user = user    
+  }
+
+  getToken(){
+    return this.authToken
+  }
+
 
 }

@@ -52,6 +52,7 @@ h1 {margin: 40px 0px;}
     margin: 5px auto;
   }
 
+  
   .search span {
     font-size: 1.3em;
   }
@@ -91,5 +92,8 @@ h1 {margin: 40px 0px;}
     .marks, .genre {
       text-align: center;
       padding:10px 0px;
+    }
+    input {
+      width:150px;
     }
    }

@@ -3,7 +3,6 @@ const router = express.Router();
 var User = require('../models/user');
 
  router.get('/fb/:id', function(req, res, next) {
-    console.log(req.params.id)
     User.find({facebookId: req.params.id}, function (err, user) {
       if(err){
         res.redirect('http://localhost:4200/home')
@@ -15,7 +14,6 @@ var User = require('../models/user');
 })
 
 router.get('/logout', function(req, res, next) {
-  // req.logout()
   req.session.destroy((err) => {
     if(err) return next(err)
   

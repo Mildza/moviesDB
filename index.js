@@ -10,6 +10,7 @@ const config = require('./config/database');
 const auth = require('./routes/auth');
 const movies = require('./routes/movies')
 const user = require('./routes/user')
+const admin = require('./routes/admins')
 
 mongoose.set('useFindAndModify', false)
 mongoose.connect(config.database,{ useNewUrlParser: true })
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use('/', movies)
 app.use('/auth', auth)
 app.use('/user', user)
+app.use('/admin', admin)
 
 const port = process.env.PORT || 3000
 
