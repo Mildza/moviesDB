@@ -1,4 +1,4 @@
-<h1 class="text-center">Mildza's Movie Database</h1>
+<h1 [@header] class="text-center">Mildza's Movie Database</h1>
 <div class="search">
   <input class="center" type="text" (keyup)="onKey($event)" placeholder="Search ...">
   <span class="float-right">Ukupno:  {{numberOfMovies}}</span> 
@@ -7,7 +7,7 @@
 <div class="spinner" *ngIf="!movies else cinema"></div>
 
 <ng-template #cinema>
-<div *ngFor="let movie of movies | reverse | filter : search as result; let i = count;" >
+<div [@list] *ngFor="let movie of movies | reverse | filter : search as result; let i = count;" >
     {{check(result.length)}}
 <div class="poster">
   <h3 >{{movie.naziv}}</h3>
